@@ -6,9 +6,6 @@ public class Assignment2Game {
 	static int tries = 5;
 	static Scanner scanner;
 	static int guess;
-	
-	//maybe i will make the game store the input statically
-	//static int input;
 
 	Assignment2Game () {
 		random = (int)(Math.floor(Math.random()*(100-0+1)+0));
@@ -17,9 +14,14 @@ public class Assignment2Game {
 	}
 	
 	public static int newGuess () {
+		/**
+		 * This method is used to take input and set the static variable guess
+		 * 
+		 * returns: int which is the number guessed
+		 */
 		System.out.println("Pick a number between 1 and 100...");
 		guess = scanner.nextInt();
-		setGuess(guess);
+		
 		//System.out.println(getGuess());
 		return guess;
 	}
@@ -32,14 +34,14 @@ public class Assignment2Game {
 		return guess;
 	}
 	
-	public static void setGuess(int guess) {
-		guess = guess;
-	}
 	public static int getTries() {
 		return tries;
 	}
 	
 	public static void subtractTry() {
+		/**
+		 * This method subtracts a try and ends the game if the user has no more tries
+		 */
 		tries = tries - 1;
 		if (getTries() == 0) {
 			System.out.println("Sorry, you ran out of tries. End of game. The number was: " + getRandom());
@@ -49,6 +51,10 @@ public class Assignment2Game {
 	}
 	
 	public static void highOrLow (int guess) {
+		/**
+		 *  This method lets us know if the guess compared to the random number the game generates is
+		 *  within the set of numbers higher than the guess or lower
+		 */
 		subtractTry();
 		if (guess > random) 
 			System.out.println("Please pick a lower number");
@@ -59,7 +65,7 @@ public class Assignment2Game {
 	
 	public static boolean validityCheck (int guess) {
 		/**
-		 * returns true if it's valid
+		 * returns true if it's between 1 or 100 inclusive
 		 */
 		if (guess < 1 || guess > 100) {
 			System.out.println("Your guess is not between 1 and 100, please try again");
