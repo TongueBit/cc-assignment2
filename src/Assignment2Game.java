@@ -6,12 +6,6 @@ public class Assignment2Game {
 	static int tries = 5;
 	static Scanner scanner;
 	static int guess;
-
-	Assignment2Game () {
-		random = (int)(Math.floor(Math.random()*(100-0+1)+0));
-		//System.out.println(random);
-		scanner = new Scanner(System.in);
-	}
 	
 	public static int newGuess () {
 		/**
@@ -75,19 +69,20 @@ public class Assignment2Game {
 	}
 	
 	public static void main(String[] args) {
+		random = (int)(Math.floor(Math.random()*(100-0+1)+0));
+		//System.out.println(random);
+		scanner = new Scanner(System.in);
 		
-		Assignment2Game game = new Assignment2Game();
-		
-		while (newGuess() != game.random) {
+		while (newGuess() != random) {
 			
 			//check the validity of the guess
-			while(!(validityCheck(game.getGuess()))) {
-				game.newGuess();
+			while(!(validityCheck(getGuess()))) {
+				newGuess();
 			}
-			highOrLow(game.getGuess());
+			highOrLow(getGuess());
 		}
 		
-		System.out.println("Good game, the number was " + game.getRandom());
+		System.out.println("Good game, the number was " + getRandom());
 		
 	}
 	
